@@ -14,7 +14,6 @@ app.post('/sign-upload', (req, res) => {
   const { public_id, folder } = req.body;
   const timestamp = Math.floor(Date.now() / 1000);
 
-  // Les paramètres à signer doivent être dans l'ordre alphabétique
   let paramsToSign = [
     `folder=${folder}`,
     `public_id=${public_id}`,
