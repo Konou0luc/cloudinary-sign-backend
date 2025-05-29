@@ -14,15 +14,14 @@ app.post('/sign-upload', (req, res) => {
   const { public_id, folder } = req.body;
   const timestamp = Math.floor(Date.now() / 1000);
 
-  // Les paramètres à signer
+  // Les paramètres à signer doivent être dans l'ordre alphabétique
   let paramsToSign = [
-    `timestamp=${timestamp}`,
-    'resource_type=raw'
-  ];
-  if (public_id) paramsToSign.push(`public_id=${public_id}`);
-  if (folder) paramsToSign.push(`folder=${folder}`);
+    `folder=${folder}`,
+    `public_id=${public_id}`,
+    `timestamp=${timestamp}`
+  ].join('&');
 
-  const signatureString = paramsToSign.sort().join('&') + CLOUDINARY_API_SECRET;
+  const signatureString = paramsToSign + CLOUDINARY_API_SECRET;
   const signature = crypto
     .createHash('sha1')
     .update(signatureString)
