@@ -14,11 +14,10 @@ app.post('/sign-upload', (req, res) => {
   const { public_id, folder } = req.body;
   const timestamp = Math.floor(Date.now() / 1000);
 
-  // Prépare les paramètres à signer
+  // Prépare les paramètres à signer (sans resource_type)
   const params = {
     folder,
     public_id,
-    resource_type: 'raw',
     timestamp
   };
 
@@ -39,8 +38,8 @@ app.post('/sign-upload', (req, res) => {
     cloudName: CLOUDINARY_CLOUD_NAME,
     timestamp,
     folder,
-    public_id,
-    resource_type: 'raw'
+    public_id
+    // resource_type n'est plus renvoyé
   });
 });
 
