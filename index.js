@@ -8,7 +8,7 @@ app.use(express.json());
 
 const CLOUDINARY_API_KEY = '965428677579295';
 const CLOUDINARY_API_SECRET = 'H5W2TLuwR5NcV7gOfS6hdNjy688';
-const CLOUDINARY_CLOUD_NAME = 'ecologis';
+const CLOUDINARY_CLOUD_NAME = 'drzfostm7';
 
 app.post('/sign-upload', (req, res) => {
   const { public_id, folder } = req.body;
@@ -39,7 +39,7 @@ app.post('/sign-upload', (req, res) => {
     timestamp,
     folder,
     public_id
-    // resource_type n'est plus renvoyé
+    // 'resource_type' supprimé définitivement
   });
 });
 
